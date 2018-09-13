@@ -1,16 +1,30 @@
 {
   "name": "lab1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "next": "^6.1.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oskarjonssson/NextLAB1.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/oskarjonssson/NextLAB1/issues"
+  },
+  "homepage": "https://github.com/oskarjonssson/NextLAB1#readme",
+  "description": ""
 }

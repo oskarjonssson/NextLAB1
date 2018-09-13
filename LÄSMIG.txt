@@ -1,0 +1,5 @@
+1. skriv in "yarn install" för att installera alla paket till node.
+
+2. För att starta servern: nodemon server.js / node server.js.
+
+3. Gå till "http://localhost:3000/api/getproducts" för att få tag i api'et.
