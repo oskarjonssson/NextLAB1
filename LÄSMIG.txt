@@ -1,5 +1,5 @@
 1. skriv in "yarn install" för att installera alla paket till node.
 
-2. För att starta servern: nodemon server.js / node server.js.
+2. Starta servern med API'et: nodemon server.js / node server.js. (Server Länk ---> http://localhost:3001/api/getproducts)
 
-3. Gå till "http://localhost:3000/api/getproducts" för att få tag i api'et.
+3.Starta "yarn dev" för att starta upp Nextjs som är våran index.js (http://localhost:3000/)
