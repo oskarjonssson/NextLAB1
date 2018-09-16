@@ -39,11 +39,19 @@ class FetchData extends Component {
     .then(data => this.setState({ apiData: data }))
   }
 
+  editProduct = (name, product, type) => {
+    let newData = [...this.state.apiData];
+    let index = newData.findIndex(p => p.name === name);
+    newData[index].product = product;
+    this.setState({ data: newData})
+  }
+
   render() {
   {/*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/}
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
       <EditProductButton
+          editProduct={this.editProduct}
           passProduct={data.product}
           passName={data.name}
           passType={data.type}

@@ -10,9 +10,7 @@ const toggleDiv = {
   border: '1px solid black',
   zIndex: '1px',
   backgroundColor: 'green'
-
 }
-
 //CSS End.
 
 class EditProductButton extends Component{
@@ -32,17 +30,28 @@ class EditProductButton extends Component{
 
   render(){
 
+    let handleChange = event => {
+      let newProduct = event.target.value;
+      this.props.editProduct(this.props.passName, newProduct)
+    }
+
     return(
       <div>
         <button onClick={this.handleToggleClick}>
-          {this.state.show ? 'ON' : 'OFF'}
+          {this.state.show ? 'Close' : 'Edit'}
         </button>
         { this.state.show &&
-          <div style= {toggleDiv}>
+          <div key={this.props.passName} style= {toggleDiv}>
             <button onClick={this.handleToggleClick}>
               {this.state.show ? 'X' : 'X'}
             </button>
-            <div>Product: {this.props.passProduct}</div>
+            <div>Product:
+              <input
+                  type='text'
+                  value={this.props.passProduct}
+                  onChange={handleChange} />
+
+            </div>
             <div>Name: {this.props.passName}</div>
             <div>Type: {this.props.passType}</div>
           </div>
