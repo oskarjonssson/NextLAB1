@@ -78,7 +78,7 @@ module.exports =
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\EditProductButton.js";
+var _jsxFileName = "C:\\Users\\demio\\Desktop\\FEU17\\Serverside\\Labbar\\NextLAB1\\components\\EditProductButton.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -94,7 +94,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+ //CSS Start.
 
+var toggleDiv = {
+  width: '400px',
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  border: '1px solid black',
+  zIndex: '1px',
+  backgroundColor: 'green' //CSS End.
+
+};
 
 var EditProductButton =
 /*#__PURE__*/
@@ -109,7 +121,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (EditProductButton.__proto__ || Object.getPrototypeOf(EditProductButton)).call(this, props));
     _this.state = {
       editData: _this.props.apiData,
-      isToggleOn: true
+      show: false
     };
     _this.handleToggleClick = _this.handleToggleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -118,10 +130,9 @@ function (_Component) {
   _createClass(EditProductButton, [{
     key: "handleToggleClick",
     value: function handleToggleClick() {
-      this.setState(function (prevState) {
-        return {
-          isToggleOn: !prevState.isToggleOn
-        };
+      var show = this.state.show;
+      this.setState({
+        show: !show
       });
     }
   }, {
@@ -130,20 +141,42 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 36
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.handleToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 37
         }
-      }, this.state.isToggleOn ? 'ON' : 'OFF'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+      }, this.state.show ? 'ON' : 'OFF'), this.state.show && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        style: toggleDiv,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 41
         }
-      }, "Edit"));
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+        onClick: this.handleToggleClick,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        }
+      }, this.state.show ? 'X' : 'X'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45
+        }
+      }, "Product: ", this.props.passProduct), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        }
+      }, "Name: ", this.props.passName), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "Type: ", this.props.passType)));
     }
   }]);
 
@@ -161,7 +194,7 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
+var _jsxFileName = "C:\\Users\\demio\\Desktop\\FEU17\\Serverside\\Labbar\\NextLAB1\\components\\FetchData.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -235,8 +268,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       {
         /*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/
       }
@@ -249,7 +280,9 @@ function (_Component) {
             lineNumber: 45
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
-          apiData: _this3.state.apiData,
+          passProduct: data.product,
+          passName: data.name,
+          passType: data.type,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 46
@@ -257,36 +290,36 @@ function (_Component) {
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 51
           }
         }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 52
           }
         }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 53
           }
         }, "Type: ", data.type));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 57
         }
       }, "Du har inte startat serven till API'et");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 60
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: divWrapper,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 61
         }
       }, list.length > 0 ? list : noRes));
     }
@@ -307,7 +340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__ = __webpack_require__("./components/FetchData.js");
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\pages\\index.js";
+var _jsxFileName = "C:\\Users\\demio\\Desktop\\FEU17\\Serverside\\Labbar\\NextLAB1\\pages\\index.js";
 
  //CSS Start.
 

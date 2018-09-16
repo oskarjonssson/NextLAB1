@@ -43,7 +43,11 @@ class FetchData extends Component {
   {/*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/}
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
-      <EditProductButton apiData={this.state.apiData} />
+      <EditProductButton
+          passProduct={data.product}
+          passName={data.name}
+          passType={data.type}
+      />
       <div>Product: {data.product}</div>
       <div>Name: {data.name}</div>
       <div>Type: {data.type}</div>
