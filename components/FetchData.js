@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditProductButton from './EditProductButton.js'
 const API = 'http://localhost:3001/api/getproducts';
 
 //CSS Styles Start.
@@ -14,19 +15,17 @@ const buttonStyle = {
 
 const divWrapper = {
   display: 'flex',
-  'justify-content': 'center',
+  justifyContent: 'center',
 }
-
 //CSS Styles End.
 
 
 class FetchData extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       apiData: [],
-    };
+    }
   }
 
   componentDidMount() {
@@ -44,12 +43,12 @@ class FetchData extends Component {
   {/*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/}
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
-      <div >Product: {data.product}</div>
+      <EditProductButton apiData={this.state.apiData} />
+      <div>Product: {data.product}</div>
       <div>Name: {data.name}</div>
       <div>Type: {data.type}</div>
     </div>
   );
-
 
   const noRes = <div>Du har inte startat serven till API'et</div>
 

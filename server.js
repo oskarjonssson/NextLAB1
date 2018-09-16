@@ -11,6 +11,7 @@ app.get('/api/:products', (req, res) => {
   let getProductsWithParam = req.params.products
   if(req.params.products === 'getproducts'){
     res.send(getProducts(getProductsWithParam))
+    res.end();
   }else{
     console.log('Wrong param..')
   }
