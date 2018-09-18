@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import EditProductButton from './EditProductButton.js'
+import AddProduct from './AddProduct.js'
+
+
+
 const API = 'http://localhost:3001/api/getproducts';
 
 //CSS Styles Start.
@@ -26,11 +30,22 @@ class FetchData extends Component {
     this.state = {
       apiData: [],
     }
+    this.deleteData = this.deleteData.bind();
   }
 
   componentDidMount() {
     this.fetchFunction();
   }
+
+  /*** DELETE REQUEST FETCH ***/
+  deleteData = () => {
+    fetch("http://localhost:3001/api/getproducts",  { method: "DELETE" })
+    .then( data => data.json())
+    .then( res => {
+        console.log(res)
+    })
+  }
+
 
   //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
   fetchFunction(){
@@ -40,10 +55,34 @@ class FetchData extends Component {
   }
 
   editProduct = (name, product, type) => {
+    console.log(this.state.apiData);
     let newData = [...this.state.apiData];
     let index = newData.findIndex(p => p.name === name);
     newData[index].product = product;
     this.setState({ data: newData})
+  }
+
+  deleteProduct = (name) => {
+    let newData = [...this.state.apiData];
+    console.log(name);
+    let index = newData.findIndex(p => p.name === name);
+    console.log(index);
+
+    //console.log(newData);
+    console.log(index);
+    newData.splice(index, 1);
+    this.setState({ apiData: newData})
+    console.log(newData);
+  }
+
+  addProduct = (name, product , type) => {
+    console.log("HÄMTAR")
+    let newData = [...this.state.apiData];
+    let obj = {name, product , type};
+    newData.push(obj);
+    console.log(newData)
+    this.setState({ apiData: newData})
+//onClick={() => this.deleteProduct(data.name)}
   }
 
   render() {
@@ -56,19 +95,22 @@ class FetchData extends Component {
           passName={data.name}
           passType={data.type}
       />
+      <button onClick={this.deleteData}>Remove</button>
       <div>Product: {data.product}</div>
       <div>Name: {data.name}</div>
       <div>Type: {data.type}</div>
     </div>
   );
 
-  const noRes = <div>Du har inte startat serven till API'et</div>
-
+  const noRes = <div>"Du har inte startat serven till API'et"</div>
     return (
       <div>
         <div style={divWrapper}>
           {list.length > 0 ? list : noRes}
         </div>
+        <AddProduct
+          addProduct={this.addProduct}
+        />
       </div>
     );
   }

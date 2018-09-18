@@ -1,11 +1,11 @@
 const express = require('express')
-const cors = require('cors')
-const getProducts = require('./products.js');
-const app = express()
-const port = 3001;
+const next = require('next')
 
-app.use(cors())
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
+<<<<<<< HEAD
 app.get('/api/:products', (req, res) => {
   console.log('params: ', req.params.products);
   let getProductsWithParam = req.params.products
@@ -23,5 +23,22 @@ app.get('/api/getproducts/find', (req, res) => {  //Exempel http://localhost:300
   res.send(getProducts(productName));
   res.end();
 });
+=======
+app.prepare()
+.then(() => {
+  const server = express()
 
-app.listen(port, () => console.log('Example app listening on port ', + port))
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+>>>>>>> a9aa2473d8806f8578817b7b82a3f5a765835521
+
+  server.listen(3000, (err) => {
+    if (err) throw err
+    console.log('> Ready on http://localhost:3000')
+  })
+})
+.catch((ex) => {
+  console.error(ex.stack)
+  process.exit(1)
+})
