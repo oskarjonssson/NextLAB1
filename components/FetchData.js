@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import EditProductButton from './EditProductButton.js'
 import AddProduct from './AddProduct.js'
 
-
-
 const API = 'http://localhost:3001/api/getproducts';
 
 //CSS Styles Start.
@@ -37,16 +35,6 @@ class FetchData extends Component {
     this.fetchFunction();
   }
 
-  /*** DELETE REQUEST FETCH ***/
-  deleteData(){
-    fetch("http://localhost:3001/api/getproducts",  { method: "DELETE" })
-    .then( data => data.json())
-    .then( res => {
-        console.log(res)
-    })
-  }
-
-
   //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
   fetchFunction(){
     fetch(API)
@@ -62,30 +50,40 @@ class FetchData extends Component {
     this.setState({ data: newData})
   }
 
-  deleteProduct = (name) => {
-    let newData = [...this.state.apiData];
-    console.log(name);
-    let index = newData.findIndex(p => p.name === name);
-    console.log(index);
-
-    //console.log(newData);
-    console.log(index);
-    newData.splice(index, 1);
-    this.setState({ apiData: newData})
-    console.log(newData);
+  deleteData = (name, product) => {
+    /*** DELETE REQUEST FETCH ***/
+    fetch('http://localhost:3001/api/' + name,  { method: 'DELETE' })
+    .then(res => res.json())
+    .then(res=> {
+      let newData = [...this.state.apiData];
+      let index = newData.findIndex(p => p.name === name);
+      newData[index].product = product;
+      newData.splice(index, 1);
+      this.setState({ apiData: newData})
+      console.log(newData);
+      console.log(JSON.stringify(res) + ' removed successfuly');
+    })
   }
 
   addProduct = (name, product , type) => {
-    console.log("HÄMTAR")
-    let newData = [...this.state.apiData];
-    let obj = {name, product , type};
-    newData.push(obj);
-    console.log(newData)
-    this.setState({ apiData: newData})
-//onClick={() => this.deleteProduct(data.name)}
+    let obj = {product, type , name}
+/*
+    fetch('http://localhost:3001/api/'+name, {
+      method: 'POST',
+      body: JSON.stringify(obj),
+    })
+    .then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+
+        })*/
+        let newData = [...this.state.apiData];
+        newData.push(obj);
+        console.log(newData)
+        this.setState({ apiData: newData})
   }
 
   render() {
+
   {/*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/}
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
@@ -95,7 +93,7 @@ class FetchData extends Component {
           passName={data.name}
           passType={data.type}
       />
-      <button onClick={this.deleteData}>Remove</button>
+    <button onClick={ () => this.deleteData(data.name)}>Remove</button>
       <div>Product: {data.product}</div>
       <div>Name: {data.name}</div>
       <div>Type: {data.type}</div>
