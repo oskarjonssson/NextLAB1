@@ -1,5 +1,5 @@
 import FetchData from '../components/FetchData.js'
-
+import AddProduct from '../components/AddProduct.js'
 //CSS Start.
   const headerWrapper = {
     fontFamily: 'Arial',
