@@ -384,20 +384,6 @@ function (_Component) {
     _classCallCheck(this, FetchData);
 
     _this = _possibleConstructorReturn(this, (FetchData.__proto__ || Object.getPrototypeOf(FetchData)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "deleteData", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        fetch("http://localhost:3001/api/getproducts", {
-          method: "DELETE"
-        }).then(function (data) {
-          return data.json();
-        }).then(function (res) {
-          console.log(res);
-        });
-      }
-    });
     Object.defineProperty(_assertThisInitialized(_this), "editProduct", {
       configurable: true,
       enumerable: true,
@@ -478,8 +464,19 @@ function (_Component) {
     /*** DELETE REQUEST FETCH ***/
 
   }, {
+    key: "deleteData",
+    value: function deleteData() {
+      fetch("http://localhost:3001/api/getproducts", {
+        method: "DELETE"
+      }).then(function (data) {
+        return data.json();
+      }).then(function (res) {
+        console.log(res);
+      });
+    } //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
+
+  }, {
     key: "fetchFunction",
-    //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
     value: function fetchFunction() {
       var _this2 = this;
 

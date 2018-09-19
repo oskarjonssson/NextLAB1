@@ -1,4 +1,4 @@
-import FetchData from '../components/FetchData.js'
+import ProductsHandle from '../components/FetchData.js'
 
 //CSS Start.
   const headerWrapper = {

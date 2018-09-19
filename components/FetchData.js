@@ -38,7 +38,7 @@ class FetchData extends Component {
   }
 
   /*** DELETE REQUEST FETCH ***/
-  deleteData = () => {
+  deleteData(){
     fetch("http://localhost:3001/api/getproducts",  { method: "DELETE" })
     .then( data => data.json())
     .then( res => {
