@@ -4,13 +4,24 @@ let products = [
   {product: 03, type: 'type3', name: 'TheThree'},
   {product: 04, type: 'type4', name: 'TheFour'},
 ]
-module.exports = function(fetchProducts){
-    if(fetchProducts === 'getproducts'){
-      return products
-    }else{
-      let result = products.find( product => product.name === fetchProducts );
-      console.log('result: ', result);
-      return result;
-    }
 
+
+module.exports = function(fetchProducts){
+  if(fetchProducts === 'getproducts'){
+    return products
+  }else{
+    let result = products.find( product => product.name === fetchProducts );
+    console.log('result: ', result);
+    products.splice(products.findIndex(product => product.name === fetchProducts), 1);
+    return result;
+  }
 }
+
+//Skriv klart objectet med get, delete och update funktionenera. Rätt funktion skall köras vid rätt request.
+/*
+{
+  get: 'get function',
+  delete: 'delete function',
+  update: 'update function'
+}
+*/

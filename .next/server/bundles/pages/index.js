@@ -78,7 +78,7 @@ module.exports =
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\components\\AddProduct.js";
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\AddProduct.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -195,11 +195,7 @@ function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-<<<<<<< HEAD
 var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\EditProductButton.js";
-=======
-var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\components\\EditProductButton.js";
->>>>>>> a9aa2473d8806f8578817b7b82a3f5a765835521
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -332,12 +328,8 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
-<<<<<<< HEAD
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
-var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\components\\FetchData.js";
->>>>>>> a9aa2473d8806f8578817b7b82a3f5a765835521
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -392,20 +384,6 @@ function (_Component) {
     _classCallCheck(this, FetchData);
 
     _this = _possibleConstructorReturn(this, (FetchData.__proto__ || Object.getPrototypeOf(FetchData)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "deleteData", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        fetch("http://localhost:3001/api/getproducts", {
-          method: "DELETE"
-        }).then(function (data) {
-          return data.json();
-        }).then(function (res) {
-          console.log(res);
-        });
-      }
-    });
     Object.defineProperty(_assertThisInitialized(_this), "editProduct", {
       configurable: true,
       enumerable: true,
@@ -425,27 +403,32 @@ function (_Component) {
         });
       }
     });
-    Object.defineProperty(_assertThisInitialized(_this), "deleteProduct", {
+    Object.defineProperty(_assertThisInitialized(_this), "deleteData", {
       configurable: true,
       enumerable: true,
       writable: true,
-      value: function value(name) {
-        var newData = _toConsumableArray(_this.state.apiData);
+      value: function value(name, product) {
+        /*** DELETE REQUEST FETCH ***/
+        fetch('http://localhost:3001/api/' + name, {
+          method: 'DELETE'
+        }).then(function (res) {
+          return res.json();
+        }).then(function (res) {
+          var newData = _toConsumableArray(_this.state.apiData);
 
-        console.log(name);
-        var index = newData.findIndex(function (p) {
-          return p.name === name;
+          var index = newData.findIndex(function (p) {
+            return p.name === name;
+          });
+          newData[index].product = product;
+          newData.splice(index, 1);
+
+          _this.setState({
+            apiData: newData
+          });
+
+          console.log(newData);
+          console.log(JSON.stringify(res) + ' removed successfuly');
         });
-        console.log(index); //console.log(newData);
-
-        console.log(index);
-        newData.splice(index, 1);
-
-        _this.setState({
-          apiData: newData
-        });
-
-        console.log(newData);
       }
     });
     Object.defineProperty(_assertThisInitialized(_this), "addProduct", {
@@ -453,22 +436,30 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value(name, product, type) {
-        console.log("HÄMTAR");
+        var obj = {
+          product: product,
+          type: type,
+          name: name
+          /*
+              fetch('http://localhost:3001/api/'+name, {
+                method: 'POST',
+                body: JSON.stringify(obj),
+              })
+              .then(res => res.json())
+              .then(response => console.log('Success:', JSON.stringify(response)))
+          
+                  })*/
+
+        };
 
         var newData = _toConsumableArray(_this.state.apiData);
 
-        var obj = {
-          name: name,
-          product: product,
-          type: type
-        };
         newData.push(obj);
         console.log(newData);
 
         _this.setState({
           apiData: newData
-        }); //onClick={() => this.deleteProduct(data.name)}
-
+        });
       }
     });
     _this.state = {
@@ -482,12 +473,10 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.fetchFunction();
-    }
-    /*** DELETE REQUEST FETCH ***/
+    } //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
 
   }, {
     key: "fetchFunction",
-    //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
     value: function fetchFunction() {
       var _this2 = this;
 
@@ -513,7 +502,7 @@ function (_Component) {
           key: data.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 91
+            lineNumber: 89
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
           editProduct: _this3.editProduct,
@@ -522,53 +511,55 @@ function (_Component) {
           passType: data.type,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 92
+            lineNumber: 90
           }
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-          onClick: _this3.deleteData,
+          onClick: function onClick() {
+            return _this3.deleteData(data.name);
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 98
+            lineNumber: 96
           }
         }, "Remove"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 99
+            lineNumber: 97
           }
         }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 100
+            lineNumber: 98
           }
         }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 101
+            lineNumber: 99
           }
         }, "Type: ", data.type));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105
+          lineNumber: 103
         }
       }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 105
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: divWrapper,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 106
         }
       }, list.length > 0 ? list : noRes), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
         addProduct: this.addProduct,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 111
+          lineNumber: 109
         }
       }));
     }
@@ -589,11 +580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__ = __webpack_require__("./components/FetchData.js");
-<<<<<<< HEAD
 var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\pages\\index.js";
-=======
-var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\pages\\index.js";
->>>>>>> a9aa2473d8806f8578817b7b82a3f5a765835521
 
  //CSS Start.
 
