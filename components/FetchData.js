@@ -43,16 +43,24 @@ class FetchData extends Component {
   }
 
   editProduct = (name, product, type) => {
-    console.log(this.state.apiData);
     let newData = [...this.state.apiData];
     let index = newData.findIndex(p => p.name === name);
     newData[index].product = product;
     this.setState({ data: newData})
   }
 
+  updateApi = (name) => {
+    let result = this.state.apiData.find( product => product.name === name );
+    console.log(result.product, result.name);
+    fetch('http://localhost:3001/api/update/' + name,
+    {
+      method: 'POST',
+      body: JSON.stringify(result)
+    })
+  }
+
   deleteData = (name, product) => {
-    /*** DELETE REQUEST FETCH ***/
-    fetch('http://localhost:3001/api/' + name,  { method: 'DELETE' })
+    fetch('http://localhost:3001/api/delete/' + name,  { method: 'DELETE' })
     .then(res => res.json())
     .then(res=> {
       let newData = [...this.state.apiData];
@@ -60,26 +68,26 @@ class FetchData extends Component {
       newData[index].product = product;
       newData.splice(index, 1);
       this.setState({ apiData: newData})
-      console.log(newData);
       console.log(JSON.stringify(res) + ' removed successfuly');
     })
   }
 
   addProduct = (name, product , type) => {
-    let obj = {product, type , name}
-/*
-    fetch('http://localhost:3001/api/'+name, {
-      method: 'POST',
-      body: JSON.stringify(obj),
-    })
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-
-        })*/
+        let obj = {product, type, name}
         let newData = [...this.state.apiData];
         newData.push(obj);
-        console.log(newData)
         this.setState({ apiData: newData})
+
+        fetch('http://localhost:3001/api/addproduct/' + name,
+        {
+          method: 'POST',
+          body: JSON.stringify(obj),
+        })
+    /*  .then(res => res.json())
+      .then(response => console.log('Success:', JSON.stringify(response)))
+      .catch(error => console.error('Error:', error));
+      */
+
   }
 
   render() {
@@ -88,6 +96,7 @@ class FetchData extends Component {
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
       <EditProductButton
+          updateProduct={this.updateApi}
           editProduct={this.editProduct}
           passProduct={data.product}
           passName={data.name}
@@ -108,6 +117,7 @@ class FetchData extends Component {
         </div>
         <AddProduct
           addProduct={this.addProduct}
+          apiData={this.state.apiData}
         />
       </div>
     );

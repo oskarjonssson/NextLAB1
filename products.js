@@ -5,23 +5,21 @@ let products = [
   {product: 04, type: 'type4', name: 'TheFour'},
 ]
 
-
-module.exports = function(fetchProducts){
+module.exports = function(fetchProducts, method, body){
   if(fetchProducts === 'getproducts'){
     return products
-  }else{
+
+  }else if(method === 'delete'){
     let result = products.find( product => product.name === fetchProducts );
-    console.log('result: ', result);
     products.splice(products.findIndex(product => product.name === fetchProducts), 1);
     return result;
+
+  }else if(method === 'update'){
+    let index = products.findIndex(p => p.name === fetchProducts);
+    products[index] = JSON.parse(body)
+    return products
+
+  }else if (method === 'addproduct'){
+    products.push(JSON.parse(body));
   }
 }
-
-//Skriv klart objectet med get, delete och update funktionenera. Rätt funktion skall köras vid rätt request.
-/*
-{
-  get: 'get function',
-  delete: 'delete function',
-  update: 'update function'
-}
-*/
