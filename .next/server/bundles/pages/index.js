@@ -279,7 +279,7 @@ function (_Component) {
   return AddProduct;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (AddProduct);
+/* harmony default export */ __webpack_exports__["a"] = (AddProduct);
 
 /***/ }),
 
