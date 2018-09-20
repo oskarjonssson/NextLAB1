@@ -11,10 +11,21 @@ app.get('/api/:products', (req, res) => {
   let getProductsWithParam = req.params.products
   if(req.params.products === 'getproducts'){
     res.send(getProducts(getProductsWithParam))
-    res.end();
   }else{
     console.log('Wrong param..')
   }
 })
+
+app.delete('/api/:x', (req, res) => {
+  console.log('delete product param: ', req.params.x);
+  let productName = req.params.x
+  res.send(getProducts(productName));
+});
+
+app.post('/api/:x', (req, res) => {
+  console.log('delete product param: ', req.params.x);
+  let productName = req.params.x
+  res.send(getProducts(productName));
+});
 
 app.listen(port, () => console.log('Example app listening on port ', + port))

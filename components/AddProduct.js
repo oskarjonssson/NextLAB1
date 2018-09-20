@@ -1,5 +1,32 @@
 import React, { Component } from 'react';
 
+const containerForm = {
+  marginTop: '10px',
+  display: 'flex',
+  width: '410px',
+  height: '50px',
+  flexDirection: 'row',
+  flexWrap: 'wrap'
+}
+
+const submitButton = {
+  width: '400px',
+  margin: '0',
+  padding: '0',
+  border: 'none',
+  outline: 'none',
+  borderRadius: '2px',
+  cursor: 'pointer',
+  backgroundColor: 'deepskyblue',
+  color: 'white'
+}
+
+const inputs = {
+  height: '20px',
+  width: '129px',
+  margin: '0',
+  padding: '0'
+}
 
 class AddProduct extends Component {
   constructor(props){
@@ -21,11 +48,11 @@ class AddProduct extends Component {
   render(){
 
     return(
-      <div>
-        <input placeholder="Product" type="text" name="productAdd" value={this.state.productAdd} onChange={this.handleChange}/>
-        <input placeholder="Name" type="text" name="nameAdd" value={this.state.nameAdd} onChange={this.handleChange}/>
-        <input placeholder="Type" type="text" name="typeAdd" value={this.state.typeAdd} onChange={this.handleChange}/>
-        <button onClick={this.handleSubmit}>Add</button>
+      <div style={containerForm}>
+        <input style={inputs} placeholder="Product" type="text" name="productAdd" value={this.state.productAdd} onChange={this.handleChange}/>
+        <input style={inputs} placeholder="Name" type="text" name="nameAdd" value={this.state.nameAdd} onChange={this.handleChange}/>
+        <input style={inputs} placeholder="Type" type="text" name="typeAdd" value={this.state.typeAdd} onChange={this.handleChange}/>
+        <button style={submitButton} onClick={this.handleSubmit}>ADD PRODUCT</button>
       </div>
 
     )

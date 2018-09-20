@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Head from 'next/head'
 
 //CSS Start.
 const toggleDiv = {
+  fontFamily: 'Muli',
   width: '400px',
   position: 'absolute',
   left: '0',
@@ -10,6 +12,16 @@ const toggleDiv = {
   border: '1px solid black',
   zIndex: '1px',
   backgroundColor: 'green'
+}
+
+const buttonsStyle = {
+  fontFamily: 'Muli',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '0.5px solid lightgray',
 }
 //CSS End.
 
@@ -37,8 +49,11 @@ class EditProductButton extends Component{
 
     return(
       <div>
-        <button onClick={this.handleToggleClick}>
-          {this.state.show ? 'Close' : 'Edit'}
+      <Head>>
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+      </Head>
+        <button style={buttonsStyle} onClick={this.handleToggleClick}>
+          {this.state.show ? 'CLOSE' : 'EDIT'}
         </button>
         { this.state.show &&
           <div key={this.props.passName} style= {toggleDiv}>
