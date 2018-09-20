@@ -46,8 +46,8 @@ class Nav extends Component{
         <Link href="/">
           <a style={links}>HOME</a>
         </Link>
-        <Link href="/test">
-          <a style={links}>TEST</a>
+        <Link href="/create">
+          <a style={links}>CREATE</a>
         </Link>
       </div>
     )

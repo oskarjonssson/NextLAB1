@@ -78,6 +78,8 @@ module.exports =
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head__ = __webpack_require__("next/head");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_head__);
 var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\components\\AddProduct.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -97,30 +99,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
+
 var containerForm = {
-  marginTop: '10px',
+  marginTop: '50px',
   display: 'flex',
-  width: '410px',
-  height: '50px',
+  justifyContent: 'center',
+  width: '100%',
   flexDirection: 'row',
   flexWrap: 'wrap'
 };
 var submitButton = {
-  width: '400px',
-  margin: '0',
-  padding: '0',
+  fontFamily: 'Montserrat',
+  width: '404px',
+  paddingTop: '5px',
+  paddingBottom: '5px',
+  marginTop: '5px',
   border: 'none',
   outline: 'none',
   borderRadius: '2px',
   cursor: 'pointer',
   backgroundColor: 'deepskyblue',
-  color: 'white'
+  color: 'white',
+  WebkitBoxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
+  MozBoxShadow: ' 0px 0px 10px 0px rgba(0,0,0,0.2)',
+  BoxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)'
+};
+var formHolder = {
+  width: '410px',
+  height: '200px'
 };
 var inputs = {
-  height: '20px',
-  width: '129px',
-  margin: '0',
-  padding: '0'
+  fontFamily: 'Montserrat',
+  paddingLeft: '5px',
+  borderRadius: '5px',
+  outline: 'none',
+  border: '0.5px solid lightgray',
+  height: '25px',
+  width: '400px',
+  marginTop: '5px',
+  WebkitBoxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
+  MozBoxShadow: ' 0px 0px 10px 0px rgba(0,0,0,0.2)',
+  BoxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)'
+};
+var formText = {
+  fontFamily: 'Montserrat',
+  margin: '0'
 };
 
 var AddProduct =
@@ -134,6 +157,23 @@ function (_Component) {
     _classCallCheck(this, AddProduct);
 
     _this = _possibleConstructorReturn(this, (AddProduct.__proto__ || Object.getPrototypeOf(AddProduct)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "addProduct", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(name, product, type) {
+        var obj = {
+          product: product,
+          type: type,
+          name: name,
+          img: '//cdn.shopify.com/s/files/1/0362/2465/products/Audeze_Mobius_Copper_1024x1024_2000x.png'
+        };
+        fetch('http://localhost:3001/api/addproduct/' + name, {
+          method: 'POST',
+          body: JSON.stringify(obj)
+        });
+      }
+    });
     Object.defineProperty(_assertThisInitialized(_this), "handleChange", {
       configurable: true,
       enumerable: true,
@@ -148,11 +188,7 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value() {
-        if (!_this.props.apiData.filter(function (e) {
-          return e.name === _this.state.nameAdd;
-        }).length > 0) {
-          _this.props.addProduct(_this.state.nameAdd, _this.state.productAdd, _this.state.typeAdd);
-        }
+        _this.addProduct(_this.state.nameAdd, _this.state.productAdd, _this.state.typeAdd);
       }
     });
     _this.state = {
@@ -170,9 +206,33 @@ function (_Component) {
         style: containerForm,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 82
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_head___default.a, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 83
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+        href: "https://fonts.googleapis.com/css?family=Montserrat",
+        rel: "stylesheet",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        }
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        style: formHolder,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 86
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+        style: formText,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        }
+      }, "Add a product:"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
         placeholder: "Product",
         type: "text",
@@ -181,7 +241,7 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 88
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
@@ -192,7 +252,7 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 89
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
@@ -203,16 +263,16 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 90
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         style: submitButton,
         onClick: this.handleSubmit,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 91
         }
-      }, "ADD PRODUCT"));
+      }, "ADD PRODUCT")));
     }
   }]);
 
@@ -262,7 +322,7 @@ var toggleDiv = {
   backgroundColor: 'green'
 };
 var buttonsStyle = {
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   width: '100%',
   border: 'none',
   cursor: 'pointer',
@@ -326,8 +386,8 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 60
         }
-      }, ">", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
-        href: "https://fonts.googleapis.com/css?family=Muli",
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+        href: "https://fonts.googleapis.com/css?family=Montserrat",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
@@ -405,9 +465,8 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_head__ = __webpack_require__("next/head");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_head__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head__ = __webpack_require__("next/head");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_head__);
 var _jsxFileName = "C:\\Users\\oskar\\Documents\\SKOLA - BACKEND\\LAB1\\components\\FetchData.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -435,7 +494,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
-
 var API = 'http://localhost:3001/api/getproducts'; //CSS Styles Start.
 
 var buttonStyle = {
@@ -443,14 +501,14 @@ var buttonStyle = {
   flexDirection: 'column',
   justifyContent: 'space-between',
   width: '200px',
-  height: '300px',
+  height: '350px',
   backgroundColor: 'white',
   border: 'none',
   borderRadius: '5px',
   color: 'lightgray',
   margin: '10px',
   padding: '20px',
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   WebkitBoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)',
   MozBoxShadow: ' 0px 0px 19px 0px rgba(0,0,0,0.2)',
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
@@ -460,29 +518,42 @@ var divWrapper = {
   justifyContent: 'center'
 };
 var containerInfo = {
-  width: '90%',
-  heiht: '100px'
+  width: '100%',
+  heiht: '50px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  fontSize: '15px'
+};
+var containerInfoText = {
+  margin: '2px',
+  color: '#5e5e5e'
 };
 var containerFetch = {
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center'
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '70%',
+  marginTop: '30px',
+  flexWrap: 'wrap'
 };
 var containerButtons = {
   width: '100%'
 };
 var buttonsStyle = {
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   width: '100%',
   border: 'none',
   cursor: 'pointer',
   backgroundColor: 'transparent',
   outline: 'none',
   borderBottom: '0.5px solid lightgray',
-  marginTop: '10px',
-  ':hover': {
-    borderBottom: '0.5px solid black'
-  } //CSS Styles End.
+  marginTop: '10px'
+};
+var imgTag = {
+  heiht: '50px',
+  width: '100%' //CSS Styles End.
 
 };
 
@@ -556,35 +627,6 @@ function (_Component) {
         });
       }
     });
-    Object.defineProperty(_assertThisInitialized(_this), "addProduct", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(name, product, type) {
-        var obj = {
-          product: product,
-          type: type,
-          name: name
-        };
-
-        var newData = _toConsumableArray(_this.state.apiData);
-
-        newData.push(obj);
-
-        _this.setState({
-          apiData: newData
-        });
-
-        fetch('http://localhost:3001/api/addproduct/' + name, {
-          method: 'POST',
-          body: JSON.stringify(obj)
-        });
-        /*  .then(res => res.json())
-          .then(response => console.log('Success:', JSON.stringify(response)))
-          .catch(error => console.error('Error:', error));
-          */
-      }
-    });
     _this.state = {
       apiData: []
     };
@@ -625,34 +667,49 @@ function (_Component) {
           key: data.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 132
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 133
+          }
+        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
+          style: imgTag,
+          src: data.img,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 133
+          }
+        })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerInfo,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 134
+          }
+        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+          style: containerInfoText,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 135
+          }
+        }, data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+          style: containerInfoText,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 136
+          }
+        }, data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+          style: containerInfoText,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 137
           }
-        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 138
-          }
-        }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 139
-          }
-        }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 140
-          }
-        }, "Type: ", data.type)), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        }, data.type)), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerButtons,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 139
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
           updateProduct: _this3.updateApi,
@@ -662,7 +719,7 @@ function (_Component) {
           passType: data.type,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 140
           }
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
           style: buttonsStyle,
@@ -671,48 +728,35 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 151
+            lineNumber: 148
           }
         }, "REMOVE")));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156
+          lineNumber: 153
         }
       }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: containerFetch,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 158
+          lineNumber: 155
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_next_head___default.a, {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159
+          lineNumber: 156
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
-        href: "https://fonts.googleapis.com/css?family=Muli",
+        href: "https://fonts.googleapis.com/css?family=Montserrat",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 160
+          lineNumber: 157
         }
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
-        addProduct: this.addProduct,
-        apiData: this.state.apiData,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 162
-        }
-      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        style: divWrapper,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 166
-        }
-      }, list.length > 0 ? list : noRes));
+      })), list.length > 0 ? list : noRes);
     }
   }]);
 
@@ -834,7 +878,7 @@ function (_Component) {
           lineNumber: 47
         }
       }, "HOME")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-        href: "/test",
+        href: "/create",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 49
@@ -845,7 +889,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 50
         }
-      }, "TEST")));
+      }, "CREATE")));
     }
   }]);
 

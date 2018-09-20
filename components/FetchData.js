@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EditProductButton from './EditProductButton.js'
-import AddProduct from './AddProduct.js'
 import Head from 'next/head'
 
 const API = 'http://localhost:3001/api/getproducts';
@@ -11,14 +10,14 @@ const buttonStyle = {
   flexDirection: 'column',
   justifyContent: 'space-between',
   width: '200px',
-  height: '300px',
+  height: '350px',
   backgroundColor: 'white',
   border: 'none',
   borderRadius: '5px',
   color: 'lightgray',
   margin: '10px',
   padding: '20px',
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   WebkitBoxShadow:'0px 0px 19px 0px rgba(0,0,0,0.2)',
   MozBoxShadow:' 0px 0px 19px 0px rgba(0,0,0,0.2)',
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
@@ -30,14 +29,27 @@ const divWrapper = {
 }
 
 const containerInfo = {
-  width: '90%',
-  heiht: '100px'
+  width: '100%',
+  heiht: '50px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  fontSize: '15px'
+}
+
+const containerInfoText = {
+  margin: '2px',
+  color: '#5e5e5e'
 }
 
 const containerFetch = {
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center'
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '70%',
+  marginTop: '30px',
+  flexWrap: 'wrap'
 }
 
 const containerButtons = {
@@ -45,7 +57,7 @@ const containerButtons = {
 }
 
 const buttonsStyle = {
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   width: '100%',
   border: 'none',
   cursor: 'pointer',
@@ -53,9 +65,11 @@ const buttonsStyle = {
   outline: 'none',
   borderBottom: '0.5px solid lightgray',
   marginTop: '10px',
-  ':hover': {
-   borderBottom: '0.5px solid black'
- }
+}
+
+const imgTag = {
+  heiht: '50px',
+  width: '100%',
 }
 //CSS Styles End.
 
@@ -110,34 +124,17 @@ class FetchData extends Component {
     })
   }
 
-  addProduct = (name, product , type) => {
-        let obj = {product, type, name}
-        let newData = [...this.state.apiData];
-        newData.push(obj);
-        this.setState({ apiData: newData})
-
-        fetch('http://localhost:3001/api/addproduct/' + name,
-        {
-          method: 'POST',
-          body: JSON.stringify(obj),
-        })
-    /*  .then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
-      */
-
-  }
 
   render() {
 
   {/*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/}
   const list = this.state.apiData.map(data =>
     <div style={buttonStyle} key={data.name}>
-
+      <div><img style={imgTag} src={data.img}></img></div>
       <div style={containerInfo}>
-        <p>Product: {data.product}</p>
-        <p>Name: {data.name}</p>
-        <p>Type: {data.type}</p>
+        <p style={containerInfoText}>{data.product}</p>
+        <p style={containerInfoText}>{data.name}</p>
+        <p style={containerInfoText}>{data.type}</p>
       </div>
       <div style={containerButtons}>
       <EditProductButton
@@ -157,15 +154,10 @@ class FetchData extends Component {
     return (
       <div style={containerFetch}>
       <Head>
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
       </Head>
-        <AddProduct
-          addProduct={this.addProduct}
-          apiData={this.state.apiData}
-        />
-        <div style={divWrapper}>
           {list.length > 0 ? list : noRes}
-        </div>
+
 
       </div>
     );

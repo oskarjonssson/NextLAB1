@@ -1,12 +1,13 @@
 import Nav from '../components/Nav.js'
 import GlobalStyle from './GlobalStyle';
+import AddProduct from '../components/AddProduct.js'
 
-const Test = props => (
+const Create = props => (
   <div>
     <GlobalStyle />
     <Nav />
-    <p>Test</p>
+    <AddProduct />
   </div>
 )
 
-export default Test
+export default Create

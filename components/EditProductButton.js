@@ -15,7 +15,7 @@ const toggleDiv = {
 }
 
 const buttonsStyle = {
-  fontFamily: 'Muli',
+  fontFamily: 'Montserrat',
   width: '100%',
   border: 'none',
   cursor: 'pointer',
@@ -57,8 +57,8 @@ class EditProductButton extends Component{
 
     return(
       <div>
-      <Head>>
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+      <Head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
       </Head>
         <button style={buttonsStyle} onClick={this.handleToggleClick}>
           {this.state.show ? 'CLOSE' : 'EDIT'}
