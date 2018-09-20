@@ -97,6 +97,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
+var containerForm = {
+  marginTop: '10px',
+  display: 'flex',
+  width: '410px',
+  height: '50px',
+  flexDirection: 'row',
+  flexWrap: 'wrap'
+};
+var submitButton = {
+  width: '400px',
+  margin: '0',
+  padding: '0',
+  border: 'none',
+  outline: 'none',
+  borderRadius: '2px',
+  cursor: 'pointer',
+  backgroundColor: 'deepskyblue',
+  color: 'white'
+};
+var inputs = {
+  height: '20px',
+  width: '129px',
+  margin: '0',
+  padding: '0'
+};
 
 var AddProduct =
 /*#__PURE__*/
@@ -142,11 +167,13 @@ function (_Component) {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        style: containerForm,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 53
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        style: inputs,
         placeholder: "Product",
         type: "text",
         name: "productAdd",
@@ -154,9 +181,10 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 54
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        style: inputs,
         placeholder: "Name",
         type: "text",
         name: "nameAdd",
@@ -164,9 +192,10 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 55
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        style: inputs,
         placeholder: "Type",
         type: "text",
         name: "typeAdd",
@@ -174,193 +203,46 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 56
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+        style: submitButton,
         onClick: this.handleSubmit,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 57
         }
-      }, "Add"));
+      }, "ADD PRODUCT"));
     }
   }]);
 
   return AddProduct;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (AddProduct);
-
-/***/ }),
-
-/***/ "./components/EditProductButton.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\EditProductButton.js";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
- //CSS Start.
-
-var toggleDiv = {
-  width: '400px',
-  position: 'absolute',
-  left: '0',
-  right: '0',
-  margin: 'auto',
-  border: '1px solid black',
-  zIndex: '1px',
-  backgroundColor: 'green' //CSS End.
-
-};
-
-var EditProductButton =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(EditProductButton, _Component);
-
-  function EditProductButton(props) {
-    var _this;
-
-    _classCallCheck(this, EditProductButton);
-
-    _this = _possibleConstructorReturn(this, (EditProductButton.__proto__ || Object.getPrototypeOf(EditProductButton)).call(this, props));
-    _this.state = {
-      editData: _this.props.apiData,
-      show: false
-    };
-    _this.handleToggleClick = _this.handleToggleClick.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(EditProductButton, [{
-    key: "handleToggleClick",
-    value: function handleToggleClick() {
-      var show = this.state.show;
-      this.setState({
-        show: !show
-      });
-    }
-  }, {
-    key: "handleChange",
-    value: function handleChange(event) {
-      var newProduct = event.target.value;
-      this.props.editProduct(this.props.passName, newProduct);
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-      this.props.updateProduct(this.props.passName);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 47
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-        onClick: this.handleToggleClick,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 48
-        }
-      }, this.state.show ? 'Close' : 'Edit'), this.state.show && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        key: this.props.passName,
-        style: toggleDiv,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-        onClick: this.handleToggleClick,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 53
-        }
-      }, this.state.show ? 'X' : 'X'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("form", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 56
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-        onClick: this.handleSubmit,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57
-        }
-      }, "save"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, "Product:", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-        type: "text",
-        value: this.props.passProduct,
-        onChange: this.handleChange,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 59
-        }
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 64
-        }
-      }, "Name: ", this.props.passName), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 65
-        }
-      }, "Type: ", this.props.passType))));
-    }
-  }]);
-
-  return EditProductButton;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (EditProductButton);
+/* unused harmony default export */ var _unused_webpack_default_export = (AddProduct);
 
 /***/ }),
 
 /***/ "./components/FetchData.js":
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js: Unexpected token (21:0)\n\n  19 |   margin: '10px',\n  20 |   padding: '20px',\n> 21 | <<<<<<< HEAD\n     | ^\n  22 |   fontFamily: 'Courier'\n  23 | =======\n  24 |   fontFamily: 'Muli',\n    at _class.raise (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:778:15)\n    at _class.unexpected (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2063:16)\n    at _class.parseIdentifierName (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3818:18)\n    at _class.parseIdentifier (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3800:21)\n    at _class.parseMaybePrivateName (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3148:19)\n    at _class.parsePropertyName (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3625:98)\n    at _class.parseObj (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3520:14)\n    at _class.parseExprAtom (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:3091:21)\n    at _class.parseExprAtom (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:8086:52)\n    at _class.parseExprAtom (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:8086:52)\n    at _class.parseExprAtom (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:8086:52)\n    at _class.parseExprSubscripts (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2725:21)\n    at _class.parseMaybeUnary (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2704:21)\n    at _class.parseExprOps (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2616:21)\n    at _class.parseMaybeConditional (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2588:21)\n    at _class.parseMaybeAssign (C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\node_modules\\babylon\\lib\\index.js:2546:21)");
+
+/***/ }),
+
+/***/ "./components/Nav.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
-var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head__ = __webpack_require__("next/head");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_head__);
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\Nav.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -370,238 +252,137 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
-var API = 'http://localhost:3001/api/getproducts'; //CSS Styles Start.
+ //CSS
 
-var buttonStyle = {
-  backgroundColor: '#80808099',
-  border: '1px solid #6f6f6f',
-  borderRadius: '5px',
-  color: 'white',
-  margin: '10px',
-  padding: '20px',
-  fontFamily: 'Courier'
-};
-var divWrapper = {
+var containerNav = {
+  fontFamily: 'Montserrat',
+  backgroundColor: '#fffff',
+  margin: '0',
+  padding: '0',
+  width: '100%',
+  height: '35px',
   display: 'flex',
-  justifyContent: 'center' //CSS Styles End.
-
+  justifyContent: 'center',
+  alignItems: 'center',
+  WebkitBoxShadow: '0px 2px 5px 0px rgba(0,0,0,0.2)',
+  MozBoxShadow: '0px 2px 5px 0px rgba(0,0,0,0.2)',
+  BoxShadow: '0px 2px 5px 0px rgba(0,0,0,0.2)'
+};
+var links = {
+  color: 'black',
+  textDecoration: 'none',
+  marginRight: '10px',
+  marginLeft: '10px',
+  fontSize: '15px',
+  letterSpacing: '0.5px'
 };
 
-var FetchData =
+var Nav =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(FetchData, _Component);
+  _inherits(Nav, _Component);
 
-  function FetchData(props) {
-    var _this;
+  function Nav() {
+    _classCallCheck(this, Nav);
 
-    _classCallCheck(this, FetchData);
-
-    _this = _possibleConstructorReturn(this, (FetchData.__proto__ || Object.getPrototypeOf(FetchData)).call(this, props));
-    Object.defineProperty(_assertThisInitialized(_this), "editProduct", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(name, product, type) {
-        var newData = _toConsumableArray(_this.state.apiData);
-
-        var index = newData.findIndex(function (p) {
-          return p.name === name;
-        });
-        newData[index].product = product;
-
-        _this.setState({
-          data: newData
-        });
-      }
-    });
-    Object.defineProperty(_assertThisInitialized(_this), "updateApi", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(name) {
-        var result = _this.state.apiData.find(function (product) {
-          return product.name === name;
-        });
-
-        console.log(result.product, result.name);
-        fetch('http://localhost:3001/api/update/' + name, {
-          method: 'POST',
-          body: JSON.stringify(result)
-        });
-      }
-    });
-    Object.defineProperty(_assertThisInitialized(_this), "deleteData", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(name, product) {
-        fetch('http://localhost:3001/api/delete/' + name, {
-          method: 'DELETE'
-        }).then(function (res) {
-          return res.json();
-        }).then(function (res) {
-          var newData = _toConsumableArray(_this.state.apiData);
-
-          var index = newData.findIndex(function (p) {
-            return p.name === name;
-          });
-          newData[index].product = product;
-          newData.splice(index, 1);
-
-          _this.setState({
-            apiData: newData
-          });
-
-          console.log(JSON.stringify(res) + ' removed successfuly');
-        });
-      }
-    });
-    Object.defineProperty(_assertThisInitialized(_this), "addProduct", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(name, product, type) {
-        var obj = {
-          product: product,
-          type: type,
-          name: name
-        };
-
-        var newData = _toConsumableArray(_this.state.apiData);
-
-        newData.push(obj);
-
-        _this.setState({
-          apiData: newData
-        });
-
-        fetch('http://localhost:3001/api/addproduct/' + name, {
-          method: 'POST',
-          body: JSON.stringify(obj)
-        });
-        /*  .then(res => res.json())
-          .then(response => console.log('Success:', JSON.stringify(response)))
-          .catch(error => console.error('Error:', error));
-          */
-      }
-    });
-    _this.state = {
-      apiData: []
-    };
-    _this.deleteData = _this.deleteData.bind();
-    return _this;
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
   }
 
-  _createClass(FetchData, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.fetchFunction();
-    } //Hämtar hem våran data från servern vi själva har startat upp med http://localhost:3001/api/getproducts
-
-  }, {
-    key: "fetchFunction",
-    value: function fetchFunction() {
-      var _this2 = this;
-
-      fetch(API).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        return _this2.setState({
-          apiData: data
-        });
-      });
-    }
-  }, {
+  _createClass(Nav, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      {
-        /*Skriver ut all data vi har hämtat hem och gör om den till JSX-element*/
-      }
-      var list = this.state.apiData.map(function (data) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-          style: buttonStyle,
-          key: data.name,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 97
-          }
-        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
-          updateProduct: _this3.updateApi,
-          editProduct: _this3.editProduct,
-          passProduct: data.product,
-          passName: data.name,
-          passType: data.type,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 98
-          }
-        }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this3.deleteData(data.name);
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 105
-          }
-        }, "Remove"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 106
-          }
-        }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 107
-          }
-        }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 108
-          }
-        }, "Type: ", data.type));
-      });
-      var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 112
-        }
-      }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        style: containerNav,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 114
+          lineNumber: 40
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        style: divWrapper,
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 41
         }
-      }, list.length > 0 ? list : noRes), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
-        addProduct: this.addProduct,
-        apiData: this.state.apiData,
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 42
         }
-      }));
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
+        charSet: "utf-8",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+        href: "https://fonts.googleapis.com/css?family=Montserrat",
+        rel: "stylesheet",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+        href: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        style: links,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, "HOME")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+        href: "/test",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        style: links,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, "TEST")));
     }
   }]);
 
-  return FetchData;
+  return Nav;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (FetchData);
+/* harmony default export */ __webpack_exports__["a"] = (Nav);
+
+/***/ }),
+
+/***/ "./pages/GlobalStyle.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__ = __webpack_require__("styled-jsx/style");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\pages\\GlobalStyle.js";
+
+
+
+var GlobalStyle = function GlobalStyle() {
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
+    styleId: "2193932969",
+    css: "body{box-sizing:border-box;margin:0;padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzXFxHbG9iYWxTdHlsZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHcUIsQUFHZ0Msc0JBQ2IsU0FDQyxVQUNiIiwiZmlsZSI6InBhZ2VzXFxHbG9iYWxTdHlsZS5qcyIsInNvdXJjZVJvb3QiOiJDOlxcVXNlcnNcXERlbm5pc1xcRGVza3RvcFxcRkVVMTdcXFNlcnZlcnNpZGUgUHJvZ3JhbWVyaW5nXFxMYWJiYXJcXE5leHRMQUIxIiwic291cmNlc0NvbnRlbnQiOlsiXHJcblxyXG5jb25zdCBHbG9iYWxTdHlsZSA9ICgpPT4gKFxyXG4gIDxzdHlsZSBqc3ggZ2xvYmFsPntgXHJcbiAgICAgIGJvZHkge1xyXG4gICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgIHBhZGRpbmc6IDA7XHJcbiAgICAgIH1cclxuICAgIGB9PC9zdHlsZT5cclxuKVxyXG5leHBvcnQgZGVmYXVsdCBHbG9iYWxTdHlsZTtcclxuIl19 */\n/*@ sourceURL=pages\\GlobalStyle.js */"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (GlobalStyle);
 
 /***/ }),
 
@@ -613,40 +394,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__ = __webpack_require__("./components/FetchData.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_FetchData_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Nav_js__ = __webpack_require__("./components/Nav.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__GlobalStyle__ = __webpack_require__("./pages/GlobalStyle.js");
 var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\pages\\index.js";
+
+
+
 
 
  //CSS Start.
 
-var headerWrapper = {
-  fontFamily: 'Arial',
-  fontSize: '36px',
-  textAlign: 'center' //CSS End.
+var containerHead = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column' //CSS End.
 
 };
 
 var Index = function Index(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    style: containerHead,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 14
     }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-    style: headerWrapper,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    }
-  }, "Welcome to an awesome API")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__["a" /* default */], {
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__GlobalStyle__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Nav_js__["a" /* default */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_FetchData_js__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
     }
   }));
 };
@@ -663,10 +452,31 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ }),
 
+/***/ "next/head":
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
+
+/***/ }),
+
+/***/ "next/link":
+/***/ (function(module, exports) {
+
+module.exports = require("next/link");
+
+/***/ }),
+
 /***/ "react":
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-jsx/style":
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
 
 /***/ })
 

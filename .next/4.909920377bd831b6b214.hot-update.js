@@ -1,7 +1,4 @@
-module.exports =
-__NEXT_REGISTER_PAGE('/', function() {
-          var comp =
-      webpackJsonp([4],{
+webpackHotUpdate(4,{
 
 /***/ "./components/AddProduct.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -153,6 +150,9 @@ function (_Component) {
 /* unused harmony default export */ var _unused_webpack_default_export = (AddProduct);
 
 /***/ }),
+
+/***/ "./components/EditProductButton.js":
+false,
 
 /***/ "./components/FetchData.js":
 /***/ (function(module, exports) {
@@ -2218,37 +2218,6 @@ module.exports = __webpack_require__("./node_modules/styled-jsx/dist/style.js")
 
 /***/ }),
 
-/***/ "./node_modules/webpack/buildin/harmony-module.js":
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
 /***/ "./pages/GlobalStyle.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2366,18 +2335,7 @@ var Index = function Index(props) {
   
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
 
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/index.js");
-
-
 /***/ })
 
-},[3])
-          return { page: comp.default }
-        })
-      ;
-//# sourceMappingURL=index.js.map
+})
+//# sourceMappingURL=4.909920377bd831b6b214.hot-update.js.map
