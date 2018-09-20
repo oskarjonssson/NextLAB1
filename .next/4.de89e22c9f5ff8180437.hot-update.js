@@ -8,7 +8,7 @@ webpackHotUpdate(4,{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
-var _jsxFileName = "C:\\Users\\demio\\Desktop\\FEU17\\Serverside\\Labbar\\NextLAB1\\components\\FetchData.js";
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -44,7 +44,7 @@ var buttonStyle = {
   color: 'white',
   margin: '10px',
   padding: '20px',
-  fontFamily: 'Arial'
+  fontFamily: 'Helvetica'
 };
 var divWrapper = {
   display: 'flex',
@@ -247,6 +247,7 @@ function (_Component) {
         }
       }, list.length > 0 ? list : noRes), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
         addProduct: this.addProduct,
+        apiData: this.state.apiData,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 118
@@ -263,4 +264,4 @@ function (_Component) {
 /***/ })
 
 })
-//# sourceMappingURL=4.ac9e52294a8f6a355710.hot-update.js.map
+//# sourceMappingURL=4.de89e22c9f5ff8180437.hot-update.js.map

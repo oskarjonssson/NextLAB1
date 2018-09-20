@@ -12,7 +12,7 @@ const buttonStyle = {
   color: 'white',
   margin: '10px',
   padding: '20px',
-  fontFamily: 'Arial'
+  fontFamily: 'Courier'
 };
 
 const divWrapper = {

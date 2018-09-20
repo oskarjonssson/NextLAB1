@@ -8,7 +8,7 @@ webpackHotUpdate(4,{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__ = __webpack_require__("./components/EditProductButton.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AddProduct_js__ = __webpack_require__("./components/AddProduct.js");
-var _jsxFileName = "C:\\Users\\demio\\Desktop\\FEU17\\Serverside\\Labbar\\NextLAB1\\components\\FetchData.js";
+var _jsxFileName = "C:\\Users\\Dennis\\Desktop\\FEU17\\Serverside Programering\\Labbar\\NextLAB1\\components\\FetchData.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -44,7 +44,7 @@ var buttonStyle = {
   color: 'white',
   margin: '10px',
   padding: '20px',
-  fontFamily: 'Arial'
+  fontFamily: 'Courier'
 };
 var divWrapper = {
   display: 'flex',
@@ -127,35 +127,28 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value(name, product, type) {
-        for (var i = 0; i < _this.state.apiData.length; i++) {
-          if (_this.state.apiData[i].name === name) {
-            console.log('finns redan');
-          } else {
-            var obj = {
-              product: product,
-              type: type,
-              name: name
-            };
+        var obj = {
+          product: product,
+          type: type,
+          name: name
+        };
 
-            var newData = _toConsumableArray(_this.state.apiData);
+        var newData = _toConsumableArray(_this.state.apiData);
 
-            newData.push(obj);
+        newData.push(obj);
 
-            _this.setState({
-              apiData: newData
-            });
+        _this.setState({
+          apiData: newData
+        });
 
-            fetch('http://localhost:3001/api/addproduct/' + name, {
-              method: 'POST',
-              body: JSON.stringify(obj)
-            });
-          }
-        }
+        fetch('http://localhost:3001/api/addproduct/' + name, {
+          method: 'POST',
+          body: JSON.stringify(obj)
+        });
         /*  .then(res => res.json())
           .then(response => console.log('Success:', JSON.stringify(response)))
           .catch(error => console.error('Error:', error));
           */
-
       }
     });
     _this.state = {
@@ -198,7 +191,7 @@ function (_Component) {
           key: data.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 103
+            lineNumber: 97
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
           updateProduct: _this3.updateApi,
@@ -208,7 +201,7 @@ function (_Component) {
           passType: data.type,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 104
+            lineNumber: 98
           }
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
           onClick: function onClick() {
@@ -216,47 +209,48 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 105
           }
         }, "Remove"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 106
           }
         }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 113
+            lineNumber: 107
           }
         }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 114
+            lineNumber: 108
           }
         }, "Type: ", data.type));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 112
         }
       }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 114
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: divWrapper,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121
+          lineNumber: 115
         }
       }, list.length > 0 ? list : noRes), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
         addProduct: this.addProduct,
+        apiData: this.state.apiData,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 124
+          lineNumber: 118
         }
       }));
     }
@@ -270,4 +264,4 @@ function (_Component) {
 /***/ })
 
 })
-//# sourceMappingURL=4.4c30fe60398734177f98.hot-update.js.map
+//# sourceMappingURL=4.fe563de0d8aac4fd8f19.hot-update.js.map
