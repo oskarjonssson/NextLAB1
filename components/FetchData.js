@@ -6,6 +6,7 @@ const API = 'http://localhost:3001/api/getproducts';
 
 //CSS Styles Start.
 const buttonStyle = {
+  position: 'relavtive',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -23,10 +24,6 @@ const buttonStyle = {
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
 }
 
-const divWrapper = {
-  display: 'flex',
-  justifyContent: 'center',
-}
 
 const containerInfo = {
   width: '100%',
@@ -39,7 +36,7 @@ const containerInfo = {
 
 const containerInfoText = {
   margin: '2px',
-  color: '#5e5e5e'
+  color: '#5e5e5e',
 }
 
 const containerFetch = {
@@ -49,11 +46,13 @@ const containerFetch = {
   justifyContent: 'space-between',
   width: '70%',
   marginTop: '30px',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  position: 'relavtive'
 }
 
 const containerButtons = {
   width: '100%',
+  position: 'relavtive'
 }
 
 const buttonsStyle = {
