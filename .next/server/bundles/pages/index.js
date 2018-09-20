@@ -311,24 +311,61 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
  //CSS Start.
 
 var toggleDiv = {
-  fontFamily: 'Muli',
-  width: '400px',
-  position: 'absolute',
-  left: '0',
-  right: '0',
-  margin: 'auto',
-  border: '1px solid black',
-  zIndex: '1px',
-  backgroundColor: 'green'
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: 'Montserrat',
+  width: '170px',
+  height: '90px',
+  margin: '0',
+  marginTop: '-200px',
+  border: 'none',
+  backgroundColor: 'white',
+  padding: '10px',
+  borderRadius: '5px',
+  WebkitBoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)',
+  MozBoxShadow: ' 0px 0px 19px 0px rgba(0,0,0,0.2)',
+  BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
 };
 var buttonsStyle = {
+  marginTop: '5px',
   fontFamily: 'Montserrat',
   width: '100%',
   border: 'none',
   cursor: 'pointer',
   backgroundColor: 'transparent',
   outline: 'none',
-  borderBottom: '0.5px solid lightgray' //CSS End.
+  borderBottom: '0.5px solid lightgray'
+};
+var buttonSave = {
+  marginTop: '5px',
+  fontFamily: 'Montserrat',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '1px solid green'
+};
+var buttonClose = {
+  marginTop: '5px',
+  fontFamily: 'Montserrat',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '1px solid red'
+};
+var inputStyle = {
+  fontFamily: 'Montserrat',
+  textAlign: 'center',
+  marginTop: '5px',
+  padding: '0',
+  width: '100%',
+  height: '20px',
+  border: '0.5px solid lightgray',
+  borderRadius: '5px' //CSS End.
 
 };
 
@@ -379,75 +416,68 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 101
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 102
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Montserrat",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 103
         }
       })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         style: buttonsStyle,
         onClick: this.handleToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 105
         }
       }, this.state.show ? 'CLOSE' : 'EDIT'), this.state.show && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         key: this.props.passName,
         style: toggleDiv,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 109
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-        onClick: this.handleToggleClick,
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("form", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 110
         }
-      }, this.state.show ? 'X' : 'X'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("form", {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 111
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-        onClick: this.handleSubmit,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 72
-        }
-      }, "save"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 73
-        }
-      }, "Product:", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        style: inputStyle,
         type: "text",
         value: this.props.passProduct,
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 112
         }
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+        style: buttonSave,
+        onClick: this.handleSubmit,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 118
         }
-      }, "Name: ", this.props.passName), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, "save"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+        style: buttonClose,
+        onClick: this.handleToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 119
         }
-      }, "Type: ", this.props.passType))));
+      }, this.state.show ? 'X' : 'X'))));
     }
   }]);
 
@@ -497,6 +527,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 var API = 'http://localhost:3001/api/getproducts'; //CSS Styles Start.
 
 var buttonStyle = {
+  position: 'relavtive',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -512,10 +543,6 @@ var buttonStyle = {
   WebkitBoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)',
   MozBoxShadow: ' 0px 0px 19px 0px rgba(0,0,0,0.2)',
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
-};
-var divWrapper = {
-  display: 'flex',
-  justifyContent: 'center'
 };
 var containerInfo = {
   width: '100%',
@@ -536,10 +563,12 @@ var containerFetch = {
   justifyContent: 'space-between',
   width: '70%',
   marginTop: '30px',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  position: 'relavtive'
 };
 var containerButtons = {
-  width: '100%'
+  width: '100%',
+  position: 'relavtive'
 };
 var buttonsStyle = {
   fontFamily: 'Montserrat',
@@ -667,49 +696,49 @@ function (_Component) {
           key: data.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 132
+            lineNumber: 131
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 133
+            lineNumber: 132
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
           style: imgTag,
           src: data.img,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 133
+            lineNumber: 132
           }
         })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerInfo,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 134
+            lineNumber: 133
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           style: containerInfoText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 134
           }
         }, data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           style: containerInfoText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 136
+            lineNumber: 135
           }
         }, data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           style: containerInfoText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 137
+            lineNumber: 136
           }
         }, data.type)), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerButtons,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 139
+            lineNumber: 138
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
           updateProduct: _this3.updateApi,
@@ -719,7 +748,7 @@ function (_Component) {
           passType: data.type,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 140
+            lineNumber: 139
           }
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
           style: buttonsStyle,
@@ -728,33 +757,33 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 147
           }
         }, "REMOVE")));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153
+          lineNumber: 152
         }
       }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: containerFetch,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 155
+          lineNumber: 154
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156
+          lineNumber: 155
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Montserrat",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 157
+          lineNumber: 156
         }
       })), list.length > 0 ? list : noRes);
     }
