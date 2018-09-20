@@ -21,7 +21,7 @@ const buttonStyle = {
   WebkitBoxShadow:'0px 0px 19px 0px rgba(0,0,0,0.2)',
   MozBoxShadow:' 0px 0px 19px 0px rgba(0,0,0,0.2)',
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
-};
+}
 
 const divWrapper = {
   display: 'flex',

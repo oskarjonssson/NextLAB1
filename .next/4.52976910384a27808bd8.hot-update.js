@@ -1,4 +1,4 @@
-webpackHotUpdate(5,{
+webpackHotUpdate(4,{
 
 /***/ "./components/AddProduct.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -212,4 +212,4 @@ function (_Component) {
 /***/ })
 
 })
-//# sourceMappingURL=5.9416298c1732061a596c.hot-update.js.map
+//# sourceMappingURL=4.52976910384a27808bd8.hot-update.js.map
