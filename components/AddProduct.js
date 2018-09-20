@@ -39,11 +39,13 @@ class AddProduct extends Component {
   }
 
   handleChange = e => {
-   this.setState({ [e.target.name]: e.target.value }); // Handler for all inputs
+    this.setState({ [e.target.name]: e.target.value }); // Handler for all inputs
   }
 
   handleSubmit = () => {
-     this.props.addProduct(this.state.nameAdd, this.state.productAdd, this.state.typeAdd)
+    if (!this.props.apiData.filter(e => e.name === this.state.nameAdd).length > 0) {
+      this.props.addProduct(this.state.nameAdd, this.state.productAdd, this.state.typeAdd)
+    }
   }
   render(){
 

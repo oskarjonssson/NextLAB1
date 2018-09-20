@@ -79,7 +79,11 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value() {
-        _this.props.addProduct(_this.state.nameAdd, _this.state.productAdd, _this.state.typeAdd);
+        if (!_this.props.apiData.filter(function (e) {
+          return e.name === _this.state.nameAdd;
+        }).length > 0) {
+          _this.props.addProduct(_this.state.nameAdd, _this.state.productAdd, _this.state.typeAdd);
+        }
       }
     });
     _this.state = {
@@ -97,7 +101,7 @@ function (_Component) {
         style: containerForm,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 53
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
@@ -108,7 +112,7 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 54
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
@@ -119,7 +123,7 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 55
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
         style: inputs,
@@ -130,14 +134,14 @@ function (_Component) {
         onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 56
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         style: submitButton,
         onClick: this.handleSubmit,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 57
         }
       }, "ADD PRODUCT"));
     }
@@ -215,6 +219,8 @@ function (_Component) {
       show: false
     };
     _this.handleToggleClick = _this.handleToggleClick.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -227,77 +233,92 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      var newProduct = event.target.value;
+      this.props.editProduct(this.props.passName, newProduct);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.updateProduct(this.props.passName);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var handleChange = function handleChange(event) {
-        var newProduct = event.target.value;
-
-        _this2.props.editProduct(_this2.props.passName, newProduct);
-      };
-
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 59
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 60
         }
       }, ">", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Muli",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 61
         }
       })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         style: buttonsStyle,
         onClick: this.handleToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 63
         }
       }, this.state.show ? 'CLOSE' : 'EDIT'), this.state.show && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         key: this.props.passName,
         style: toggleDiv,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 67
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
         onClick: this.handleToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 68
         }
-      }, this.state.show ? 'X' : 'X'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 63
-        }
-      }, "Product:", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-        type: "text",
-        value: this.props.passProduct,
-        onChange: handleChange,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 64
-        }
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        }
-      }, "Name: ", this.props.passName), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, this.state.show ? 'X' : 'X'), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("form", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 71
         }
-      }, "Type: ", this.props.passType)));
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+        onClick: this.handleSubmit,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 72
+        }
+      }, "save"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73
+        }
+      }, "Product:", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+        type: "text",
+        value: this.props.passProduct,
+        onChange: this.handleChange,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        }
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        }
+      }, "Name: ", this.props.passName), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80
+        }
+      }, "Type: ", this.props.passType))));
     }
   }]);
 
@@ -412,8 +433,6 @@ function (_Component) {
       enumerable: true,
       writable: true,
       value: function value(name, product, type) {
-        console.log(_this.state.apiData);
-
         var newData = _toConsumableArray(_this.state.apiData);
 
         var index = newData.findIndex(function (p) {
@@ -426,13 +445,28 @@ function (_Component) {
         });
       }
     });
+    Object.defineProperty(_assertThisInitialized(_this), "updateApi", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value(name) {
+        var result = _this.state.apiData.find(function (product) {
+          return product.name === name;
+        });
+
+        console.log(result.product, result.name);
+        fetch('http://localhost:3001/api/update/' + name, {
+          method: 'POST',
+          body: JSON.stringify(result)
+        });
+      }
+    });
     Object.defineProperty(_assertThisInitialized(_this), "deleteData", {
       configurable: true,
       enumerable: true,
       writable: true,
       value: function value(name, product) {
-        /*** DELETE REQUEST FETCH ***/
-        fetch('http://localhost:3001/api/' + name, {
+        fetch('http://localhost:3001/api/delete/' + name, {
           method: 'DELETE'
         }).then(function (res) {
           return res.json();
@@ -449,7 +483,6 @@ function (_Component) {
             apiData: newData
           });
 
-          console.log(newData);
           console.log(JSON.stringify(res) + ' removed successfuly');
         });
       }
@@ -463,26 +496,24 @@ function (_Component) {
           product: product,
           type: type,
           name: name
-          /*
-              fetch('http://localhost:3001/api/'+name, {
-                method: 'POST',
-                body: JSON.stringify(obj),
-              })
-              .then(res => res.json())
-              .then(response => console.log('Success:', JSON.stringify(response)))
-          
-                  })*/
-
         };
 
         var newData = _toConsumableArray(_this.state.apiData);
 
         newData.push(obj);
-        console.log(newData);
 
         _this.setState({
           apiData: newData
         });
+
+        fetch('http://localhost:3001/api/addproduct/' + name, {
+          method: 'POST',
+          body: JSON.stringify(obj)
+        });
+        /*  .then(res => res.json())
+          .then(response => console.log('Success:', JSON.stringify(response)))
+          .catch(error => console.error('Error:', error));
+          */
       }
     });
     _this.state = {
@@ -525,43 +556,44 @@ function (_Component) {
           key: data.name,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 135
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerInfo,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 128
+            lineNumber: 137
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 129
+            lineNumber: 138
           }
         }, "Product: ", data.product), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 130
+            lineNumber: 139
           }
         }, "Name: ", data.name), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 131
+            lineNumber: 140
           }
         }, "Type: ", data.type)), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
           style: containerButtons,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 133
+            lineNumber: 142
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__EditProductButton_js__["a" /* default */], {
+          updateProduct: _this3.updateApi,
           editProduct: _this3.editProduct,
           passProduct: data.product,
           passName: data.name,
           passType: data.type,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 134
+            lineNumber: 143
           }
         }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
           style: buttonsStyle,
@@ -570,45 +602,46 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 140
+            lineNumber: 151
           }
         }, "REMOVE")));
       });
       var noRes = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145
+          lineNumber: 156
         }
       }, "\"Du har inte startat serven till API'et\"");
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: containerFetch,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147
+          lineNumber: 158
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_next_head___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 159
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Muli",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 149
+          lineNumber: 160
         }
       })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__AddProduct_js__["a" /* default */], {
         addProduct: this.addProduct,
+        apiData: this.state.apiData,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151
+          lineNumber: 162
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         style: divWrapper,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 154
+          lineNumber: 166
         }
       }, list.length > 0 ? list : noRes));
     }

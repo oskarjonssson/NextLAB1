@@ -33,6 +33,8 @@ class EditProductButton extends Component{
       show: false,
     }
     this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleToggleClick() {
@@ -40,12 +42,18 @@ class EditProductButton extends Component{
       this.setState( { show : !show } )
     }
 
-  render(){
-
-    let handleChange = event => {
+    handleChange(event) {
       let newProduct = event.target.value;
       this.props.editProduct(this.props.passName, newProduct)
     }
+
+    handleSubmit(event) {
+      event.preventDefault();
+      this.props.updateProduct(this.props.passName)
+    }
+
+  render(){
+
 
     return(
       <div>
@@ -60,15 +68,17 @@ class EditProductButton extends Component{
             <button onClick={this.handleToggleClick}>
               {this.state.show ? 'X' : 'X'}
             </button>
-            <div>Product:
-              <input
+            <form >
+              <button onClick={this.handleSubmit}>save</button>
+              <div>Product:
+                <input
                   type='text'
                   value={this.props.passProduct}
-                  onChange={handleChange} />
-
-            </div>
-            <div>Name: {this.props.passName}</div>
-            <div>Type: {this.props.passType}</div>
+                  onChange={this.handleChange} />
+              </div>
+              <div>Name: {this.props.passName}</div>
+              <div>Type: {this.props.passType}</div>
+            </form>
           </div>
         }
       </div>
