@@ -18,14 +18,10 @@ const buttonStyle = {
   color: 'lightgray',
   margin: '10px',
   padding: '20px',
-<<<<<<< HEAD
-  fontFamily: 'Courier'
-=======
   fontFamily: 'Muli',
   WebkitBoxShadow:'0px 0px 19px 0px rgba(0,0,0,0.2)',
   MozBoxShadow:' 0px 0px 19px 0px rgba(0,0,0,0.2)',
   BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
->>>>>>> c7126d553090c0d5e5b5aa68081ea35e8e1bbc13
 };
 
 const divWrapper = {
