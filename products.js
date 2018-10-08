@@ -1,8 +1,8 @@
 let products = [
-  {product: 01, type: 'type1', name: 'TheOne'},
-  {product: 02, type: 'type2', name: 'TheTwo'},
-  {product: 03, type: 'type3', name: 'TheThree'},
-  {product: 04, type: 'type4', name: 'TheFour'},
+  {product: 'Headphones', type: 'Wireless', name: 'Audeze Mobius', img: '//cdn.shopify.com/s/files/1/0362/2465/products/Audeze_Mobius_Copper_1024x1024_2000x.png'},
+  {product: 'Headphones', type: 'Wireless', name: 'Sennheiser HD 1', img: '//cdn.shopify.com/s/files/1/0362/2465/products/product_detail_x1_desktop_HD_1_BT_AE_black-sq-01_1200x_ccbb03bd-9f7d-4447-88be-33af967e736e_2000x.jpg'},
+  {product: 'Headphones', type: 'Wireless ', name: 'Sennheiser HD 4.40 BT ', img: '//cdn.shopify.com/s/files/1/0362/2465/products/product_detail_x2_desktop_HD_4_40_AE_BT-sennheiser-01_2000x.jpg'},
+  {product: 'Headphones', type: 'Wireless Noise ', name: 'Sennheiser Momentum ', img: '//cdn.shopify.com/s/files/1/0362/2465/products/square_louped_MOMENTUM_II_BT_AE_ivory-sq-01-sennheiser_2000x.jpeg'},
 ]
 
 module.exports = function(fetchProducts, method, body){

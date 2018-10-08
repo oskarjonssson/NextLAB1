@@ -1,16 +1,70 @@
 import React, { Component } from 'react';
+import Head from 'next/head'
 
 //CSS Start.
 const toggleDiv = {
-  width: '400px',
-  position: 'absolute',
-  left: '0',
-  right: '0',
-  margin: 'auto',
-  border: '1px solid black',
-  zIndex: '1px',
-  backgroundColor: 'green'
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: 'Montserrat',
+  width: '170px',
+  height: '90px',
+  margin: '0',
+  marginTop: '-200px',
+  border: 'none',
+  backgroundColor: 'white',
+  padding:'10px',
+  borderRadius: '5px',
+  WebkitBoxShadow:'0px 0px 19px 0px rgba(0,0,0,0.2)',
+  MozBoxShadow:' 0px 0px 19px 0px rgba(0,0,0,0.2)',
+  BoxShadow: '0px 0px 19px 0px rgba(0,0,0,0.2)'
 }
+
+const buttonsStyle = {
+  marginTop:'5px',
+  fontFamily: 'Montserrat',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '0.5px solid lightgray',
+}
+
+const buttonSave = {
+  marginTop:'5px',
+  fontFamily: 'Montserrat',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '1px solid green',
+}
+
+
+const buttonClose = {
+  marginTop:'5px',
+  fontFamily: 'Montserrat',
+  width: '100%',
+  border: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  outline: 'none',
+  borderBottom: '1px solid red',
+}
+
+const inputStyle = {
+  fontFamily: 'Montserrat',
+  textAlign: 'center',
+  marginTop: '5px',
+  padding: '0',
+  width: '100%',
+  height: '20px',
+  border: '0.5px solid lightgray',
+  borderRadius: '5px'
+}
+
 //CSS End.
 
 class EditProductButton extends Component{
@@ -45,24 +99,26 @@ class EditProductButton extends Component{
 
     return(
       <div>
-        <button onClick={this.handleToggleClick}>
-          {this.state.show ? 'Close' : 'Edit'}
+      <Head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+      </Head>
+        <button style={buttonsStyle} onClick={this.handleToggleClick}>
+          {this.state.show ? 'CLOSE' : 'EDIT'}
         </button>
         { this.state.show &&
           <div key={this.props.passName} style= {toggleDiv}>
-            <button onClick={this.handleToggleClick}>
-              {this.state.show ? 'X' : 'X'}
-            </button>
             <form >
-              <button onClick={this.handleSubmit}>save</button>
-              <div>Product:
+              <div>
                 <input
+                  style={inputStyle}
                   type='text'
                   value={this.props.passProduct}
                   onChange={this.handleChange} />
               </div>
-              <div>Name: {this.props.passName}</div>
-              <div>Type: {this.props.passType}</div>
+              <button style={buttonSave} onClick={this.handleSubmit}>save</button>
+              <button style={buttonClose} onClick={this.handleToggleClick}>
+                {this.state.show ? 'X' : 'X'}
+              </button>
             </form>
           </div>
         }
